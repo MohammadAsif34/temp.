@@ -7,7 +7,7 @@ import PageNotFound from "../pages/PageNotFound";
 const PublicRotes = () => {
   return (
     <>
-      <Routes>
+      <Routes> 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />

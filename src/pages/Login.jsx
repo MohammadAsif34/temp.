@@ -38,7 +38,7 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate("/", { replace: true });
+        // navigate("/", { replace: true });
       }, 500);
     }
   }, [user]);
@@ -47,7 +47,7 @@ const Login = () => {
     <>
       <div className="w-full max-sm:px-4 h-screen flex justify-center items-center">
         <form
-          className="w-1/3 max-sm:w-1/1 max-lg:w-2/3 px-12 py-8 border border-neutral-700 rounded-xl"
+          className="min-w-[450px] max-sm:w-1/1 max-lg:w-2/3 px-12 py-8 border border-neutral-700 rounded-xl"
           onSubmit={handleSubmit}
         >
           <h1 className="mb-10 text-center text-4xl font-semibold ">Login</h1>

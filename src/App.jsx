@@ -1,25 +1,50 @@
 import React from "react";
 import Home from "./pages/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Outlet,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import PrivateRotes from "./routes/PrivateRotes";
-import PublicRotes from "./routes/PublicRotes";
+// import PrivateRotes from "./routes/PrivateRotes";
+// import PublicRotes from "./routes/PublicRotes";
 import PageNotFound from "./pages/PageNotFound";
 import { useUser } from "./context/CreateContext";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
+
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  {
+    path: "/auth",
+    children: [
+      { path: "register", element: <Register /> },
+      { path: "login", element: <Login /> },
+    ],
+  },
+  { path: "*", element: <PageNotFound /> },
+]);
 const App = () => {
-  const { appKey } = useUser();
-  return (
-    <div key={appKey}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<PrivateRotes />} />
-          <Route path="/auth/*" element={<PublicRotes />} />
-        </Routes>
-      </BrowserRouter>
-      <ToastContainer />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
+
+// const App = () => {
+//   const { appKey } = useUser();
+//   return (
+//     <div key={appKey}>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/*" element={<PrivateRotes />} />
+//           <Route path="/auth/*" element={<PublicRotes />} />
+//         </Routes>
+//       </BrowserRouter>
+//       <ToastContainer />
+//     </div>
+//   );
+// };
 
 export default App;
