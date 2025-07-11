@@ -16,16 +16,16 @@ import { useUser } from "./context/CreateContext";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
-
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
   {
-    path: "/auth",
+    path: "/",
     children: [
+      { path: "/", element: <Home /> },
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
     ],
   },
+
   { path: "*", element: <PageNotFound /> },
 ]);
 const App = () => {
