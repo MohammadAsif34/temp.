@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import {
   BrowserRouter,
   createBrowserRouter,
+  createHashRouter,
   Outlet,
   Route,
   RouterProvider,
@@ -16,11 +17,11 @@ import { useUser } from "./context/CreateContext";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     children: [
-      { path: "/", element: <Home /> },
+      { index: true, element: <Home /> },
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
     ],
@@ -29,7 +30,12 @@ const router = createBrowserRouter([
   { path: "*", element: <PageNotFound /> },
 ]);
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </>
+  );
 };
 
 // const App = () => {
